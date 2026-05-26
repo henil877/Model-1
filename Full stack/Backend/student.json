@@ -1,0 +1,29 @@
+
+[{
+    "Roll_id": 1,
+    "name": "Henil",
+    "RollNo": 72,
+    "Course": "Btech",
+    "Branch": "IT"
+},
+{
+    "Roll_id": 2,
+    "name": "Kenil",
+    "RollNo": 49,
+    "Course": "Btech",
+    "Branch": "IT"
+},
+{
+    "Roll_id": 3,
+    "name": "Rohan",
+    "RollNo": 58,
+    "Course": "Btech",
+    "Branch": "IT"
+},{
+    "Roll_id": 4,
+    "name": "Darshil",
+    "RollNo": 60,
+    "Course": "Btech",
+    "Branch": "IT"
+}]
+
