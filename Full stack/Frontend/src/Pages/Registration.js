@@ -1,69 +1,62 @@
+
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+function Registration() {
   const navigate = useNavigate();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const [error, setError] = useState("");
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (
-      formData.name === "" ||
-      formData.email === "" ||
-      formData.password === ""
-    ) {
+    if (name === "" || email === "" || password === "") {
       setError("All fields are required");
     } else {
       setError("");
-      alert("Registration Successful");
-      navigate("/home");
+      axios
+        .post("http://localhost:8081/api/users", { name, email, password })
+        .then((response) => {
+          alert("Registration Successful");
+          navigate("/home");
+        })
+        .catch((error) => {
+          setError("Registration Failed");
+        });
     }
   };
 
   return (
     <div style={{ textAlign: "center", marginTop: "100px" }}>
       <form onSubmit={handleSubmit}>
-        <h2>Registration Form</h2>
+        <h2>Register Form</h2>
 
         <input
           type="text"
-          name="name"
           placeholder="Enter Name"
-          value={formData.name}
-          onChange={handleChange}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <br /><br />
 
         <input
           type="email"
-          name="email"
           placeholder="Enter Email"
-          value={formData.email}
-          onChange={handleChange}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <br /><br />
 
         <input
           type="password"
-          name="password"
           placeholder="Enter Password"
-          value={formData.password}
-          onChange={handleChange}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
         />
         <br /><br />
 
@@ -73,6 +66,6 @@ const Register = () => {
       </form>
     </div>
   );
-};
+}
 
-export default Register;
+export default Registration;
