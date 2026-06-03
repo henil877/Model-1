@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 
 
 import Register from "./Pages/Registration";
-import Home from "./Pages/Home";
 import Header from "./Header";
 import ApiCalling from "./ApiCalling";
 
