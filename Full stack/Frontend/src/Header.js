@@ -18,10 +18,7 @@ function Header() {
         </li>
 
         <li>
-          <a
-            href="/model_1_StaticWeb/index.html"
-            rel="noreferrer"
-          >
+          <a href="/model_1_StaticWeb/index.html">
             ShoesWeb
           </a>
         </li>
