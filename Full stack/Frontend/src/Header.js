@@ -20,7 +20,6 @@ function Header() {
         <li>
           <a
             href="/model_1_StaticWeb/index.html"
-            target="_blank"
             rel="noreferrer"
           >
             ShoesWeb
