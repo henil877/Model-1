@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - BloomShop</title>
+    <link rel="stylesheet" href="css/myprofile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+
+    <div id="header"></div>
+
+    <div class="profile-wrapper">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="avatar-box">
+                <div class="avatar-circle">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <h3 id="sidebarName">User</h3>
+                <p id="sidebarEmail" class="sidebar-email">—</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="myprofile.html" class="sidebar-link active">
+                    <i class="fa-solid fa-user"></i> My Profile
+                </a>
+                <a href="cart.html" class="sidebar-link">
+                    <i class="fa-solid fa-cart-shopping"></i> My Cart
+                </a>
+                <a href="orderhistory.html" class="sidebar-link">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Order History
+                </a>
+                <a href="category.html" class="sidebar-link">
+                    <i class="fa-solid fa-layer-group"></i> Category
+                </a>
+                <a href="contact.html" class="sidebar-link">
+                    <i class="fa-solid fa-headset"></i> Support
+                </a>
+                <button class="sidebar-link logout-btn" id="logoutBtn">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="profile-main">
+            <div class="profile-card">
+                <h2 class="section-title"><i class="fa-solid fa-address-card"></i> Personal Information</h2>
+                <hr class="divider">
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-user"></i> Full Name</label>
+                        <p id="infoFullname">—</p>
+                    </div>
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-at"></i> Username</label>
+                        <p id="infoUsername">—</p>
+                    </div>
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-envelope"></i> Email</label>
+                        <p id="infoEmail">—</p>
+                    </div>
+                    <div class="info-item">
+                        <label><i class="fa-solid fa-phone"></i> Phone Number</label>
+                        <p id="infoPhone">—</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2 class="section-title"><i class="fa-solid fa-bolt"></i> Quick Actions</h2>
+                <hr class="divider">
+                <div class="action-grid">
+                    <a href="cart.html" class="action-card">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>My Cart</span>
+                    </a>
+                    <a href="orderhistory.html" class="action-card">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                        <span>Order History</span>
+                    </a>
+                    <a href="category.html" class="action-card">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <span>Category</span>
+                    </a>
+                    <a href="contact.html" class="action-card">
+                        <i class="fa-solid fa-headset"></i>
+                        <span>Support</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+        $(document).ready(function () {
+            $("#header").load("header.html");
+            $("#footer").load("footer.html");
+
+            // Redirect if not logged in
+            const userStr = localStorage.getItem("loggedInUser");
+            if (!userStr) {
+                alert("Please login first.");
+                window.location.href = "Login.html";
+                return;
+            }
+
+            const user = JSON.parse(userStr);
+
+            // Fill sidebar
+            $("#sidebarName").text(user.fullname || user.username || "User");
+            $("#sidebarEmail").text(user.email || "");
+
+            // Fill personal info
+            $("#infoFullname").text(user.fullname || "—");
+            $("#infoUsername").text(user.username || "—");
+            $("#infoEmail").text(user.email || "—");
+            $("#infoPhone").text(user.phone || "—");
+
+            // Logout
+            $("#logoutBtn").click(function () {
+                localStorage.removeItem("loggedInUser");
+                alert("Logged out successfully!");
+                window.location.href = "Login.html";
+            });
+        });
+    </script>
+
+</body>
+</html>

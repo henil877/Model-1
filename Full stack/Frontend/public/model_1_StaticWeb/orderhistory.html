@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders</title>
+    <link rel="stylesheet" href="css/orderhistory.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+    <div id="header"></div>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home </a><span>›</span> OrderHistory
+    </div>
+
+    <div class="container">
+
+        <!-- SIDEBAR -->
+
+        <div class="sidebar">
+
+            <h1>Filters</h1>
+
+            <div class="filter-box">
+                <h3>ORDER STATUS</h3>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>On the way</label>
+                </div>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>Delivered</label>
+                </div>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>Cancelled</label>
+                </div>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>Returned</label>
+                </div>
+            </div>
+
+            <div class="filter-box">
+                <h3>ORDER TIME</h3>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>Last 30 days</label>
+                </div>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>2024</label>
+                </div>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>2023</label>
+                </div>
+
+                <div class="filter-item">
+                    <input type="checkbox">
+                    <label>Older</label>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CONTENT -->
+
+        <div class="content">
+
+            <!-- SEARCH -->
+
+            <div class="search-box">
+                <input type="text" placeholder="Search your orders here">
+                <button> Search Orders</button>
+            </div>
+
+            
+            <div id="ordersContainer"></div>
+
+        </div>
+
+    </div>
+    <div id="footer"></div>
+    <script>
+        $(document).ready(function () {
+            $("#header").load("header.html");
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#footer").load("footer.html");
+        });
+    </script>
+    <script>
+
+    // GET ORDERS
+
+    let orders =
+        JSON.parse(localStorage.getItem("orders")) || [];
+
+    let container =
+        document.getElementById("ordersContainer");
+
+    // IF NO ORDERS
+
+    if (orders.length === 0) {
+
+        container.innerHTML = `
+            <h2 style="padding:30px; text-align:center;">
+                No Orders Found
+            </h2>
+        `;
+    }
+
+    // SHOW ORDERS
+
+    else {
+
+        orders.reverse().forEach(order => {
+
+            container.innerHTML += `
+
+            <div class="order-card">
+
+                <div class="order-left">
+
+                    <img src="${order.image}" alt="">
+
+                    <div class="product-details">
+
+                        <h2>${order.name}</h2>
+
+                        <p>
+                            Color: ${order.color}
+                            &nbsp;
+                            Size: ${order.size}
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="price">
+                    ₹${order.price}
+                </div>
+
+                <div class="status">
+
+                    <h3 class="green">
+                        ● ${order.status} on ${order.date}
+                    </h3>
+
+                    <p>
+                        Your item has been delivered
+                    </p>
+
+                    <div class="review">
+                        ★ Rate & Review Product
+                    </div>
+
+                </div>
+
+            </div>
+
+            `;
+
+        });
+
+    }
+
+</script>
+
+</body>
+
+</html>

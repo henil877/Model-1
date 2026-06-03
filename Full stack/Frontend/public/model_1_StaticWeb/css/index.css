@@ -1,0 +1,275 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .slider {
+            width: 80%;
+            height: 400px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin-top: 100px;
+        }
+
+        /* Slides */
+        .slides {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            animation: slide 12s infinite;
+        }
+
+        .slides img {
+            width: 25%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Animation */
+        @keyframes slide {
+
+            0% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-25%);
+            }
+
+            45% {
+                transform: translateX(-25%);
+            }
+
+            50% {
+                transform: translateX(-50%);
+            }
+
+            70% {
+                transform: translateX(-50%);
+            }
+
+            75% {
+                transform: translateX(-75%);
+            }
+
+            95% {
+                transform: translateX(-75%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        h2 {
+            margin-top: 10px;
+            color: orange;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        p {
+            text-align: center;
+            font-size: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .main {
+            display: flex;
+            margin-left: 100px;
+        }
+
+        .box1 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box2 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box3 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box4 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box5 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box6 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box7 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box8 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box9 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        .box10 {
+            margin-top: 20px;
+            margin-left: 30px;
+            height: 500px;
+            width: 400px;
+            border: 2px solid black;
+            border-radius: 20px;
+        }
+
+        #img1 {
+            height: 400px;
+            width: 398px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img2 {
+            height: 400px;
+            width: 397px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img3 {
+            height: 400px;
+            width: 397px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img4 {
+            height: 400px;
+            width: 397px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img5 {
+            height: 400px;
+            width: 398px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img6 {
+            height: 400px;
+            width: 396px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img7 {
+            height: 400px;
+            width: 398px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img8 {
+            height: 400px;
+            width: 396px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img9 {
+            height: 400px;
+            width: 396px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        #img10 {
+            height: 400px;
+            width: 396px;
+            border-radius: 20px 20px 0px 0px;
+        }
+
+        h3 {
+            margin-left: 10px;
+        }
+
+        h5 {
+            margin-left: 10px;
+        }
+
+        input {
+            font-size: 20px;
+            background-color: orange;
+            border-radius: 20px;
+            margin-left: 80px;
+            width: 200px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: right;
+            position: sticky;
+            margin-right: 30px;
+        }
+
+        .scrollupbox {
+            border-radius: 30%;
+            height: 40px;
+            width: 40px;
+            background-color: orange;
+            align-content: center;
+            text-align: center;
+        }

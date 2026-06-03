@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Form UI</title>
+
+  <link rel="stylesheet" href="css/contact.css">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+
+  <div class="contact">
+
+    <div id="header"></div>
+
+    <!-- LEFT FORM -->
+    <div class="contact-form">
+
+      <h2>Send us a message</h2>
+
+      <p>
+        Fill out the form below and we'll get back to you as soon as possible.
+      </p>
+
+      <form>
+
+        <div class="row">
+
+          <div class="input-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Your Name.." required>
+          </div>
+
+          <div class="input-group">
+            <label>Your Email</label>
+            <input type="email" placeholder="Name@example.com" required>
+          </div>
+
+        </div>
+
+        <div class="input-group" style="margin-bottom:25px;">
+          <label>Subject</label>
+          <input type="text" placeholder="How can we help you?">
+        </div>
+
+        <div class="input-group">
+          <label>Your Message</label>
+
+          <textarea placeholder="Tell us more about your question or concern..."></textarea>
+        </div>
+
+        <button class="send-button">
+          <i class="fa-regular fa-paper-plane"></i>
+          Send Message
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right-side">
+
+      <!-- CONTACT INFO -->
+      <div class="card">
+
+        <h3>Contact Information</h3>
+
+        <div class="info-box">
+
+          <div class="icon">
+            <i class="fa-regular fa-envelope"></i>
+          </div>
+
+          <div class="info-text">
+            <h4>Email Us</h4>
+
+            <p>
+              hello@bloomshop.com<br>
+              support@bloomshop.com<br>
+              Send us an email anytime
+            </p>
+          </div>
+
+        </div>
+
+        <div class="info-box">
+
+          <div class="icon">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+
+          <div class="info-text">
+            <h4>Call Us</h4>
+
+            <p>
+              +1 (555) 123-4567<br>
+              +1 (555) 987-6543<br>
+              Mon-Fri from 8am to 5pm
+            </p>
+          </div>
+
+        </div>
+
+        <div class="info-box">
+
+          <div class="icon">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+
+          <div class="info-text">
+            <h4>Visit Us</h4>
+
+            <p>
+              123 Fashion Street<br>
+              Style City, SC 12345<br>
+              Come say hello at our office
+            </p>
+          </div>
+
+        </div>
+
+        <div class="info-box">
+
+          <div class="icon">
+            <i class="fa-regular fa-clock"></i>
+          </div>
+
+          <div class="info-text">
+            <h4>Working Hours</h4>
+
+            <p>
+              Monday - Friday: 9am - 6pm<br>
+              Saturday: 10am - 4pm<br>
+              Sunday: Closed
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- FAQ SECTION -->
+      <div class="card faq-card">
+
+        <h3>Frequently Asked Questions</h3>
+
+        <div class="accordion" id="faqAccordion">
+
+          <!-- FAQ 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                How long does shipping take?
+              </button>
+            </h2>
+
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+
+              <div class="accordion-body">
+                Standard shipping usually takes 3-5 business days.
+              </div>
+
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                Can I return my order?
+              </button>
+            </h2>
+
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+              <div class="accordion-body">
+                Yes, returns are accepted within 30 days of purchase.
+              </div>
+
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                Do you offer customer support?
+              </button>
+            </h2>
+
+            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+              <div class="accordion-body">
+                Yes, our support team is available 24/7 to help you.
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- MAP -->
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3670.185493418097!2d72.53206287509393!3d23.090304579126446!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e833af6f39347%3A0xf1db9065daea7008!2sSilver%20Oak%20University!5e0!3m2!1sen!2sin!4v1778820237870!5m2!1sen!2sin"
+        width="600" height="450" style="border:0; border-radius:20px;" allowfullscreen="" loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+  <div id="footer"></div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Header Footer Load -->
+  <script>
+    $(document).ready(function () {
+      $("#header").load("header.html");
+      $("#footer").load("footer.html");
+    });
+  </script>
+
+</body>
+
+</html>

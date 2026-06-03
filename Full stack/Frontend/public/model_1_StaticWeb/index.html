@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Page</title>
+  <link rel="stylesheet" href="css/index.css" />
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+  <div id="header"></div>
+
+  <!-- Slider -->
+  <div class="slider">
+    <div class="slides">
+      <img src="images/slideimg1.avif" alt="Shoe 1" />
+      <img src="images/slideimg2.avif" alt="Shoe 2" />
+      <img src="images/slideimg3.avif" alt="Shoe 3" />
+      <img src="images/slideimg4.avif" alt="Shoe 4" />
+    </div>
+  </div>
+
+  <h2>Step Into Style</h2>
+  <p>
+    Discover our latest collection of premium sneakers <br />— comfort,
+    design, and performance in every pair.
+  </p>
+
+  <div class="main">
+    <div class="box1">
+      <a href="productdetail.html?id=1">
+        <img src="images/img1.avif" id="img1" />
+        <h3>AirFlex Runner</h3>
+      </a>
+      <h5>Rs. 8,536.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('AirFlex Runner',8536,'images/img1.avif')" />
+    </div>
+    <div class="box2">
+      <a href="productdetail.html?id=2">
+        <img src="images/img2.avif" id="img2" />
+        <h3>Urban Street Pro</h3>
+      </a>
+      <h5>Rs. 9,440.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Urban Street Pro',9440,'images/img2.avif')" />
+    </div>
+    <div class="box3">
+      <a href="productdetail.html?id=3">
+        <img src="images/img3.avif" id="img3" />
+        <h3>Classic court 90s</h3>
+      </a>
+      <h5>Rs. 7,550.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Classic court 90s',7550,'images/img3.avif')" />
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="box4">
+      <a href="productdetail.html?id=4">
+        <img src="images/img4.avif" id="img4" />
+        <h3>Volt Edge</h3>
+      </a>
+      <h5>Rs. 19,086.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Volt Edge',19086,'images/img4.avif')" />
+    </div>
+    <div class="box5">
+      <a href="productdetail.html?id=5">
+        <img src="images/img5.avif" id="img5" />
+        <h3>Zenith Flow</h3>
+      </a>
+      <h5>Rs. 12,372.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Zenith Flow',12372,'images/img5.avif')" />
+    </div>
+    <div class="box6">
+      <a href="productdetail.html?id=6">
+        <img src="images/img6.avif" id="img6" />
+        <h3>Street Vibe Low</h3>
+      </a>
+      <h5>Rs. 6,617.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Street Vibe Low',6617,'images/img6.avif')" />
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="box7">
+      <a href="productdetail.html?id=7">
+        <img src="images/img7.avif" id="img7" />
+        <h3>Nova Horizon</h3>
+      </a>
+      <h5>Rs. 10,453.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Nova Horizon',10453,'images/img7.avif')" />
+    </div>
+    <div class="box8">
+      <a href="productdetail.html?id=8">
+        <img src="images/img8.avif" id="img8" />
+        <h3>Pulse React</h3>
+      </a>
+      <h5>Rs. 9,440.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Pulse React',9440,'images/img8.avif')" />
+    </div>
+    <div class="box9">
+      <a href="productdetail.html?id=9">
+        <img src="images/img9.avif" id="img9" />
+        <h3>Core Street Retro</h3>
+      </a>
+      <h5>Rs. 8,152.00</h5>
+      <input type="button" value="Add to Cart" onclick="addToCart('Core Street Retro',8152,'images/img9.avif')" />
+    </div>
+  </div>
+
+  <div class="top">
+    <div class="scrollupbox">
+      <div class="arrow">
+        <a href="#"> <i class="fa-solid fa-arrow-up"></i> </a>
+      </div>
+    </div>
+  </div>
+
+  <br />
+  <hr />
+  <div id="footer"></div>
+
+  <script>
+    $(document).ready(function () {
+      $("#header").load("header.html");
+      $("#footer").load("footer.html");
+    });
+
+    function addToCart(name, price, image) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let existingProduct = cart.find(item => item.name === name);
+      if (existingProduct) {
+        existingProduct.qty += 1;
+      } else {
+        cart.push({ name: name, price: price, image: image, qty: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("Product Added To Cart");
+    }
+  </script>
+</body>
+
+</html>

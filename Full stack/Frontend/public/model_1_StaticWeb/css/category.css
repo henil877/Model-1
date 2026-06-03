@@ -1,0 +1,287 @@
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+ body {
+   background-color: white;
+ }
+
+ header {
+   display: flex;
+   justify-content: end;
+   align-items: center;
+   height: 60px;
+   background-color: lightgray;
+ }
+
+ #navheader {
+   padding-right: 40px;
+   text-decoration: none;
+   color: black;
+ }
+
+ #shop {
+   position: relative;
+   right: 65%;
+ }
+
+ span {
+   color: orange;
+ }
+
+ h1 {
+   margin-top: 30px;
+   margin-left: 20px;
+   font-family: 'Bebas Neue', sans-serif;
+   font-size: 30px;
+   letter-spacing: 0.08em;
+   margin-bottom: 36px;
+ }
+
+ .grid {
+   display: grid;
+   margin-right: 10px;
+   margin-left: 10px;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 24px;
+ }
+
+ .card {
+   background: var(--card-bg);
+   border: 1px solid var(--border);
+   border-radius: 4px;
+   overflow: hidden;
+   position: relative;
+   transition: box-shadow 0.25s ease, transform 0.25s ease;
+ }
+
+ .card:hover {
+   transform: translateY(-4px);
+   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+ }
+
+ .img-wrap {
+   width: 100%;
+   aspect-ratio: 1 / 0.82;
+   /* background: #fafaf8; */
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
+   border: 1px solid lightgray;
+ }
+
+ .img-wrap img {
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   transition: transform 0.3s ease;
+ }
+
+ .card:hover .img-wrap img {
+   transform: scale(1.04);
+ }
+
+ .info {
+   padding: 16px 18px 20px;
+   border-top: 1px solid var(--border);
+ }
+
+ .brand-tag {
+   display: inline-block;
+   background: var(--brand-tag);
+   color: var(--muted);
+   font-size: 0.68rem;
+   font-weight: 500;
+   letter-spacing: 0.12em;
+   text-transform: uppercase;
+   padding: 3px 8px;
+   border-radius: 2px;
+   margin-bottom: 8px;
+ }
+
+ .product-name {
+   font-size: 0.92rem;
+   font-weight: 500;
+   color: var(--text);
+   margin-bottom: 12px;
+   line-height: 1.35;
+ }
+
+ .pricing {
+   display: flex;
+   align-items: baseline;
+   gap: 10px;
+   flex-wrap: wrap;
+ }
+
+ .sale-price {
+   font-size: 1rem;
+   font-weight: 600;
+   color: var(--sale-price);
+ }
+
+ .mrp-label {
+   font-size: 0.7rem;
+   font-weight: 500;
+   letter-spacing: 0.08em;
+   color: var(--muted);
+   text-transform: uppercase;
+ }
+
+ .mrp-price {
+   font-size: 0.85rem;
+   color: var(--mrp);
+   text-decoration: line-through;
+ }
+
+ /* Responsive */
+ @media (max-width: 900px) {
+   .grid {
+     grid-template-columns: repeat(2, 1fr);
+   }
+ }
+
+ @media (max-width: 520px) {
+   .grid {
+     grid-template-columns: 1fr;
+   }
+
+   body {
+     padding: 28px 16px;
+   }
+ }
+
+ .top {
+   display: flex;
+   justify-content: center;
+   position: sticky;
+   margin-right: 30px;
+   margin-bottom: 20px;
+ }
+
+ .scrollupbox {
+   border-radius: 30%;
+   height: 40px;
+   width: 40px;
+   background-color: orange;
+   align-content: center;
+   text-align: center;
+ }
+
+ a {
+   color: black;
+ }
+
+ .loadmorebutton{
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.load-btn{
+    padding: 12px 35px;
+    border: none;
+    border-radius: 30px;
+    background: orange;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.load-btn:hover{
+    background: orange;
+}
+
+.main-layout {
+    display: flex;
+    gap: 25px;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+.filter-sidebar {
+    width: 220px;
+    height: fit-content;
+    background: lightgray;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    position: sticky;
+    top: 20px;
+}
+
+.filter-sidebar h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.filter-btn {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: none;
+    border-radius: 6px;
+    background: white;
+    color: black;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: orange;
+    color: white;
+}
+
+.product-content {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .filter-sidebar {
+        width: 100%;
+        position: static;
+    }
+}
+
+
+.price-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    background: #f5f5f5;
+    color: black;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s ease;
+    text-align: left;
+}
+
+.price-btn:hover {
+    background: orange;
+    color: white;
+}
+
+.price-btn.active {
+    background: orange;
+    color: white;
+}
+
+.filter-sidebar h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #222;
+}
+

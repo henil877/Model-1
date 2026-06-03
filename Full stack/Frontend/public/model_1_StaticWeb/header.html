@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Header</title>
+  <link rel="stylesheet" href="css/header.css">
+</head>
+<body>
+  <div id="header">
+    <header>
+      <h3 id="shop"><a href="index.html">BLOOM<span>SHOP</span></a></h3>
+      <nav>
+        <a href="index.html" id="navheader">Home</a>
+        <a href="category.html" id="navheader">Category</a>
+        <a href="cart.html" id="navheader">Cart</a>
+        <a href="contact.html" id="navheader">Contact US</a>
+        <a href="Login.html" id="navLogin">Login</a>
+        <a href="Register.html" id="navRegister">Register</a>
+        <a href="myprofile.html" id="navProfile" style="display:none;">Profile</a>
+      </nav>
+    </header>
+  </div>
+  <script>
+    var user = localStorage.getItem("loggedInUser");
+    if (user) {
+      document.getElementById("navProfile").style.display = "inline";
+      document.getElementById("navLogin").style.display = "none";
+      document.getElementById("navRegister").style.display = "none";
+    }
+  </script>
+</body>
+</html>

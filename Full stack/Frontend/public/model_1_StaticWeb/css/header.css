@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 60px;
+    background-color: lightgray;
+    padding: 0 20px;
+
+}
+
+/* Logo always left-anchored */
+#shop {
+    margin-right: auto;
+    font-size: 1.2rem;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+#shop a {
+    text-decoration: none;
+    color: black;
+}
+
+span {
+    color: orange;
+}
+
+/* Nav links */
+nav a,
+#navheader,
+.navheader-link,
+#navProfile,
+#navLogin,
+#navRegister {
+    padding: 0 18px;
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+nav a:hover,
+#navheader:hover,
+.navheader-link:hover,
+#navProfile:hover,
+#navLogin:hover,
+#navRegister:hover {
+    color: orange;
+}
+
+#navProfile {
+    font-weight: 600;
+}

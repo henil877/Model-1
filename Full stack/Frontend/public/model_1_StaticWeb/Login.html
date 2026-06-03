@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="css/Login.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div id="header"></div>
+
+    <div class="container">
+        <form id="loginForm">
+            <h2>Login</h2>
+
+            <label class="label">Username</label>
+            <input type="text" id="username" autofocus required>
+            <br><br>
+
+            <label class="label">Password</label>
+            <input type="password" id="password" required>
+            <br><br>
+
+            <input type="submit" value="Login" class="btn" id="loginBtn">
+            <a href="Register.html" id="Register">Register</a>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $("#header").load("header.html");
+
+            // Already logged in → go home
+            if (localStorage.getItem("loggedInUser")) {
+                window.location.href = "index.html";
+                return;
+            }
+
+            $("#loginForm").submit(function (event) {
+                event.preventDefault();
+
+                var enteredUsername = $("#username").val().trim();
+                var enteredPassword = $("#password").val();
+
+                var savedUserStr = localStorage.getItem("registeredUser");
+
+                if (!savedUserStr) {
+                    alert("No account found. Please register first.");
+                    return;
+                }
+
+                var savedUser = JSON.parse(savedUserStr);
+
+                if (savedUser.username === enteredUsername && savedUser.password === enteredPassword) {
+                    localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
+                    alert("Login Successful! Welcome back, " + (savedUser.fullname || savedUser.username) + "!");
+                    window.location.href = "index.html";
+                } else {
+                    alert("Wrong username or password. Please try again.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
