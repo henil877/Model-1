@@ -6,7 +6,9 @@ function Header() {
     <nav>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <a href="/model_1_StaticWeb/index.html">
+            Home
+          </a>
         </li>
 
         <li>
