@@ -20,7 +20,7 @@ function Registration() {
     } else {
       setError("");
       axios
-        .post("http://localhost:8081/api/users", { name, email, password })
+        .post(`${process.env.REACT_APP_API_URL}/api/users`, { name, email, password })
         .then((response) => {
           alert("Registration Successful");
           navigate("/home");

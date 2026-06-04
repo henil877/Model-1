@@ -1,3 +1,5 @@
+require("dotenv").config({ path: "../.env" })
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -7,9 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(
-  "mongodb+srv://henildarji:henildarji123@cluster0.id56ex2.mongodb.net/E-commerce"
-)
+mongoose.connect( process.env.MONGO_URI )
 .then(() => console.log("MongoDB Connected"))
 .catch((err) => console.log(err));
 
@@ -46,6 +46,6 @@ app.post("/api/users", async (req, res) => {
   }
 });
 
-app.listen(8081, () => {
-  console.log("Server running on http://localhost:8081");
+app.listen(process.env.PORT, () => {
+  console.log("Server running on http://localhost:${process.env.PORT}");
 });
