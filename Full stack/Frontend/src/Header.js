@@ -14,6 +14,10 @@ function Header() {
         </li>
 
         <li>
+          <Link to="/showuser">Show user</Link>
+        </li>
+
+        <li>
           <Link to="/ApiCalling">ProductList</Link>
         </li>
 
