@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Show Users</title>
+  <link rel="stylesheet" href="css/header.css" />
+  <style>
+    body { font-family: Arial, sans-serif; background:#f7f7f7; margin:0; }
+    .container { max-width:1100px; margin:40px auto; background:white; padding:25px; border-radius:12px; box-shadow:0 5px 18px rgba(0,0,0,.08); }
+    h1 { text-align:center; margin-bottom:20px; color:#222; }
+    table { width:100%; border-collapse:collapse; }
+    th,td { border:1px solid #ddd; padding:12px; text-align:left; }
+    th { background:#111; color:white; }
+    tr:nth-child(even){ background:#fafafa; }
+    .msg { text-align:center; padding:15px; color:#555; }
+  </style>
+</head>
+<body>
+  <div id="header"></div>
+  <div class="container">
+    <h1>Registered Users</h1>
+    <div id="message" class="msg">Loading users...</div>
+    <table id="usersTable" style="display:none;">
+      <thead>
+        <tr>
+          <th>No.</th>
+          <th>Full Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody id="usersBody"></tbody>
+    </table>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/api.js"></script>
+  <script>
+    $(function(){ $('#header').load('header.html'); });
+
+    async function loadUsers(){
+      const msg = document.getElementById('message');
+      const table = document.getElementById('usersTable');
+      const body = document.getElementById('usersBody');
+      try {
+        const data = await apiRequest('/api/users');
+        body.innerHTML = '';
+        if (!data.users || data.users.length === 0) {
+          msg.textContent = 'No users found.';
+          return;
+        }
+        data.users.forEach((user, index) => {
+          body.innerHTML += `
+            <tr>
+              <td>${index + 1}</td>
+              <td>${user.fullname || '-'}</td>
+              <td>${user.username || '-'}</td>
+              <td>${user.email || '-'}</td>
+              <td>${user.phone || '-'}</td>
+            </tr>`;
+        });
+        msg.style.display = 'none';
+        table.style.display = 'table';
+      } catch (error) {
+        msg.textContent = 'Backend not connected: ' + error.message;
+      }
+    }
+    loadUsers();
+  </script>
+</body>
+</html>

@@ -7,6 +7,7 @@
     <title>Login Page</title>
     <link rel="stylesheet" href="css/Login.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/api.js"></script>
 </head>
 <body>
     <div id="header"></div>
@@ -32,33 +33,23 @@
         $(document).ready(function () {
             $("#header").load("header.html");
 
-            // Already logged in → go home
-            if (localStorage.getItem("loggedInUser")) {
-                window.location.href = "index.html";
-                return;
-            }
-
-            $("#loginForm").submit(function (event) {
+            $("#loginForm").submit(async function (event) {
                 event.preventDefault();
 
                 var enteredUsername = $("#username").val().trim();
                 var enteredPassword = $("#password").val();
 
-                var savedUserStr = localStorage.getItem("registeredUser");
+                try {
+                    const data = await apiRequest("/api/login", {
+                        method: "POST",
+                        body: JSON.stringify({ username: enteredUsername, password: enteredPassword })
+                    });
 
-                if (!savedUserStr) {
-                    alert("No account found. Please register first.");
-                    return;
-                }
-
-                var savedUser = JSON.parse(savedUserStr);
-
-                if (savedUser.username === enteredUsername && savedUser.password === enteredPassword) {
-                    localStorage.setItem("loggedInUser", JSON.stringify(savedUser));
-                    alert("Login Successful! Welcome back, " + (savedUser.fullname || savedUser.username) + "!");
+                    localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+                    alert("Login Successful! Welcome back, " + (data.user.fullname || data.user.username) + "!");
                     window.location.href = "index.html";
-                } else {
-                    alert("Wrong username or password. Please try again.");
+                } catch (error) {
+                    alert(error.message);
                 }
             });
         });

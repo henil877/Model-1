@@ -7,6 +7,7 @@
     <title>My Orders</title>
     <link rel="stylesheet" href="css/orderhistory.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/api.js"></script>
 </head>
 
 <body>
@@ -104,80 +105,83 @@
     </script>
     <script>
 
-    // GET ORDERS
+    const container = document.getElementById("ordersContainer");
 
-    let orders =
-        JSON.parse(localStorage.getItem("orders")) || [];
+    function renderOrders(orderCards) {
+        container.innerHTML = "";
 
-    let container =
-        document.getElementById("ordersContainer");
-
-    // IF NO ORDERS
-
-    if (orders.length === 0) {
-
-        container.innerHTML = `
-            <h2 style="padding:30px; text-align:center;">
-                No Orders Found
-            </h2>
-        `;
-    }
-
-    // SHOW ORDERS
-
-    else {
-
-        orders.reverse().forEach(order => {
-
-            container.innerHTML += `
-
-            <div class="order-card">
-
-                <div class="order-left">
-
-                    <img src="${order.image}" alt="">
-
-                    <div class="product-details">
-
-                        <h2>${order.name}</h2>
-
-                        <p>
-                            Color: ${order.color}
-                            &nbsp;
-                            Size: ${order.size}
-                        </p>
-
-                    </div>
-
-                </div>
-
-                <div class="price">
-                    ₹${order.price}
-                </div>
-
-                <div class="status">
-
-                    <h3 class="green">
-                        ● ${order.status} on ${order.date}
-                    </h3>
-
-                    <p>
-                        Your item has been delivered
-                    </p>
-
-                    <div class="review">
-                        ★ Rate & Review Product
-                    </div>
-
-                </div>
-
-            </div>
-
+        if (!orderCards || orderCards.length === 0) {
+            container.innerHTML = `
+                <h2 style="padding:30px; text-align:center;">
+                    No Orders Found
+                </h2>
             `;
+            return;
+        }
 
+        orderCards.forEach(order => {
+            container.innerHTML += `
+            <div class="order-card">
+                <div class="order-left">
+                    <img src="${order.image || ''}" alt="">
+                    <div class="product-details">
+                        <h2>${order.name}</h2>
+                        <p>
+                            Color: ${order.color || 'Black'}
+                            &nbsp;
+                            Size: ${order.size || 'L'}
+                        </p>
+                    </div>
+                </div>
+                <div class="price">₹${order.price}</div>
+                <div class="status">
+                    <h3 class="green">● ${order.status || 'Delivered'} on ${order.date || ''}</h3>
+                    <p>Your item has been delivered</p>
+                    <div class="review">★ Rate & Review Product</div>
+                </div>
+            </div>`;
         });
-
     }
+
+    async function loadOrders() {
+        const user = JSON.parse(localStorage.getItem("loggedInUser") || "null");
+        if (!user || !user._id) {
+            alert("Please login first.");
+            window.location.href = "Login.html";
+            return;
+        }
+
+        try {
+            const data = await apiRequest(`/api/my-orders/${user._id}`);
+            const orderCards = [];
+
+            data.orders.forEach(order => {
+                const date = new Date(order.createdAt).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "short"
+                });
+
+                order.items.forEach(item => {
+                    orderCards.push({
+                        name: item.name,
+                        image: item.image,
+                        price: item.price,
+                        color: item.color,
+                        size: item.size,
+                        status: order.orderStatus,
+                        date: date
+                    });
+                });
+            });
+
+            renderOrders(orderCards);
+        } catch (error) {
+            const localOrders = JSON.parse(localStorage.getItem("orders")) || [];
+            renderOrders(localOrders.reverse());
+        }
+    }
+
+    loadOrders();
 
 </script>
 

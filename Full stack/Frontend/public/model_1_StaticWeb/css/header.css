@@ -64,3 +64,25 @@ nav a:hover,
 #navProfile {
     font-weight: 600;
 }
+/* Extra links ke liye responsive header */
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    overflow-x: auto;
+}
+
+@media (max-width: 900px) {
+    header {
+        padding: 0 10px;
+    }
+    nav a,
+    #navheader,
+    .navheader-link,
+    #navProfile,
+    #navLogin,
+    #navRegister {
+        padding: 0 8px;
+        font-size: 13px;
+    }
+}

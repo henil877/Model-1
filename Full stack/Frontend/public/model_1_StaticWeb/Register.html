@@ -6,6 +6,7 @@
     <title>Register</title>
     <link rel="stylesheet" href="css/Register.css">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/api.js"></script>
 </head>
 <body>
     <div id="header"></div>
@@ -42,11 +43,7 @@
 
         $("#header").load("header.html");
 
-        if (localStorage.getItem("loggedInUser")) {
-            window.location.href = "index.html";
-        }
-
-        $("#registerForm").submit(function (event) {
+        $("#registerForm").submit(async function (event) {
             event.preventDefault();
 
             var fullname = $("#fullname").val().trim();
@@ -91,21 +88,18 @@
                 return;
             }
 
-            var userData = {
-                fullname: fullname,
-                username: username,
-                password: password,
-                email: email,
-                phone: phone
-            };
+            try {
+                const data = await apiRequest("/api/register", {
+                    method: "POST",
+                    body: JSON.stringify({ fullname, username, password, email, phone })
+                });
 
-            localStorage.setItem("registeredUser", JSON.stringify(userData));
-
-            localStorage.setItem("loggedInUser", JSON.stringify(userData));
-
-            alert("Registration Successful! Welcome to BloomShop!");
-
-            window.location.href = "index.html";
+                localStorage.setItem("loggedInUser", JSON.stringify(data.user));
+                alert("Registration Successful! Welcome to BloomShop!");
+                window.location.href = "index.html";
+            } catch (error) {
+                alert(error.message);
+            }
         });
 
     });
